@@ -1,4 +1,4 @@
-package com.flightcompany.model.flightresponse;
+package com.flightcompany.web.skypicker.model.flightresponse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
