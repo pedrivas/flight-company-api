@@ -1,5 +1,6 @@
 package com.flightcompany.web.skypicker.model.flightresponse;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -28,7 +29,9 @@ public class ResponseData {
     public int price;
     public Conversion conversion;
     public Fare fare;
+    @JsonProperty("price_dropdown")
     public PriceDropdown priceDropdown;
+    @JsonProperty("bags_price")
     public BagsPrice bagsPrice;
     public BagLimit baglimit;
     public Availability availability;
