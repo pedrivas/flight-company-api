@@ -4,21 +4,6 @@
 
 This project has the main objective of provide interations with flight company data through skypicker api to calculate average prices of flights and bag transportation.
 
-## Application
-
-The application provides the functionalities:
-
-### Calculate Average Prices
-
-> <b>Method</b>
->> POST
->
-> <b>Path</b>
->> /flight/calculateAvgPrices
-> 
-> <b>Description</b>
->> Make a request to the skypicker API and return the average prices of the flight and bag transportation
-
 ## 🔧 Technologies
 
 - Java 18
