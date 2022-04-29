@@ -28,7 +28,7 @@ public class SkyPickerService {
                 .queryParam("fly_to", flightAverageRequest.getFlyTo())
                 .queryParam("depart_after", flightAverageRequest.getDateFrom())
                 .queryParam("depart_before", flightAverageRequest.getDateTo())
-                .queryParam("partner", "kiwicocuskiwicocus");
+                .queryParam("partner", "drivasdrivas");
 
         return restTemplate.getForObject(uriComponentsBuilder.toUriString(), FlightResponse.class);
 

@@ -22,20 +22,14 @@ public class FlightAverageUtil {
 
     public FlightAverage calculateFlightAverage(FlightAverageRequest flightAverageRequest) {
 
-        FlightResponse flights = skyPickerService.getFlights(flightAverageRequest);
+        FlightResponse flights = getFlightResponse(flightAverageRequest);
         List<ResponseData> flightsData = flights.getData();
 
-        double averagePrice = flightsData.stream().mapToDouble(ResponseData::getPrice).average().isPresent()
-                ? flightsData.stream().mapToDouble(ResponseData::getPrice).average().getAsDouble()
-                : 0;
+        double averagePrice = getAveragePrice(flightsData);
 
-        double firstBagAveragePrice = flightsData.stream().mapToDouble(data -> data.getBagsPrice().get_1()).average().isPresent()
-                ? flightsData.stream().mapToDouble(data -> data.getBagsPrice().get_1()).average().getAsDouble()
-                : 0;
+        double firstBagAveragePrice = getFirstBagAveragePrice(flightsData);
 
-        double secondBagAveragePrice = flightsData.stream().mapToDouble(data -> data.getBagsPrice().get_2()).average().isPresent()
-                ? flightsData.stream().mapToDouble(data -> data.getBagsPrice().get_2()).average().getAsDouble()
-                : 0;
+        double secondBagAveragePrice = getSecondBagAveragePrice(flightsData);
 
         return FlightAverage.builder()
                 .averagePrice(averagePrice)
@@ -46,6 +40,28 @@ public class FlightAverageUtil {
                 .destination(flightAverageRequest.getFlyTo())
                 .build();
 
+    }
+
+    protected double getSecondBagAveragePrice(List<ResponseData> flightsData) {
+        return flightsData.stream().mapToDouble(data -> data.getBagsPrice().getSecondBagPrice()).average().isPresent()
+                ? flightsData.stream().mapToDouble(data -> data.getBagsPrice().getSecondBagPrice()).average().getAsDouble()
+                : 0;
+    }
+
+    protected double getFirstBagAveragePrice(List<ResponseData> flightsData) {
+        return flightsData.stream().mapToDouble(data -> data.getBagsPrice().getFirstBagPrice()).average().isPresent()
+                ? flightsData.stream().mapToDouble(data -> data.getBagsPrice().getFirstBagPrice()).average().getAsDouble()
+                : 0;
+    }
+
+    protected double getAveragePrice(List<ResponseData> flightsData) {
+        return flightsData.stream().mapToDouble(ResponseData::getPrice).average().isPresent()
+                ? flightsData.stream().mapToDouble(ResponseData::getPrice).average().getAsDouble()
+                : 0;
+    }
+
+    protected FlightResponse getFlightResponse(FlightAverageRequest flightAverageRequest) {
+        return skyPickerService.getFlights(flightAverageRequest);
     }
 
 

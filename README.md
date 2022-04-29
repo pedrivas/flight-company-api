@@ -4,6 +4,20 @@
 
 This project has the main objective of provide interations with flight company data through skypicker api to calculate average prices of flights and bag transportation.
 
+## Application
+
+The application provides the functionalities:
+
+### Calculate Average Prices
+
+> <b>Method</b>
+>> POST
+>
+> <b>Path</b>
+>> /flight/calculateAvgPrices
+> 
+> <b>Description</b>
+>> Make a request to the skypicker API and return the average prices of the flight and bag transportation
 
 ## 🔧 Technologies
 
@@ -12,6 +26,8 @@ This project has the main objective of provide interations with flight company d
 - Hibernate
 - PostgreSQL
 - Docker
+- Swagger
+- Mockito
 
 ## 🚀 Setup
 
@@ -19,7 +35,7 @@ This project has the main objective of provide interations with flight company d
 
 ><b>Build the jar file</b>
 >```
->./mvnw clean package -DskipTests
+>./mvnw clean package
 >```
 ><b>Copy the generate file to the docker folder</b>
 >```
@@ -30,3 +46,10 @@ This project has the main objective of provide interations with flight company d
 >cd .\src\main\docker\
 >docker compose up
 >```
+
+## Endpoints - API Documentation
+
+With the application running, access the below url to verify the available endpoints and api documentation
+
+>
+>> http://localhost:8888/swagger-ui/index.html#
